@@ -63,9 +63,9 @@ export async function GET() {
     });
 
   } catch (error) {
-    console.error('Error fetching spots:', error);
+    console.error('Error fetching spots:', error.message, error.stack);
     return Response.json(
-      { error: 'Failed to fetch travel spots' }, 
+      { error: 'Failed to fetch travel spots', detail: error.message }, 
       { status: 500 }
     );
   }

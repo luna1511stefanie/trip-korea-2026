@@ -38,22 +38,22 @@ export async function GET() {
     // L: In Itinerary?, M: Day, N: Remarks, O: Cost (SGD)
     const spots = dataRows.map(row => {
       return {
-        name: row[0] || '',
-        type: row[1] || '',
-        area: row[2] || '',
-        photoUrl: row[3] || '',
-        description: row[4] || '',
-        openingHours: row[5] || '',
-        rating: row[6] || '',
-        reservationLink: row[7] || '',
-        menuLink: row[8] || '',
-        naverMapLink: row[9] || '',
-        inItinerary: row[10] || '',
-        day: row[11] || '',
-        remarks: row[12] || '',
-        cost: row[13] || ''
+        name: (row[0] || '').trim(),
+        type: (row[1] || '').trim(),
+        area: (row[2] || '').trim(),
+        photoUrl: (row[3] || '').trim(),
+        description: (row[4] || '').trim(),
+        openingHours: (row[5] || '').trim(),
+        rating: (row[6] || '').trim(),
+        reservationLink: (row[7] || '').trim(),
+        menuLink: (row[8] || '').trim(),
+        naverMapLink: (row[9] || '').trim(),
+        inItinerary: (row[10] || '').trim(),
+        day: (row[11] || '').trim(),
+        remarks: (row[12] || '').trim(),
+        cost: (row[13] || '').trim()
       };
-    }).filter(spot => spot.name.trim() !== ''); // Filter out empty rows
+    }).filter(spot => spot.name !== ''); // Filter out empty rows
 
     // Set cache headers (5 minutes)
     return Response.json(spots, {

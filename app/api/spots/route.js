@@ -2,12 +2,12 @@ import { google } from 'googleapis';
 
 export async function GET() {
   try {
-    // Use direct file path for credentials
     const sheetId = process.env.SHEET_ID;
+    const serviceAccountKey = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY);
 
     // Initialize Google Sheets API
     const auth = new google.auth.GoogleAuth({
-      keyFile: '/Users/luna/.openclaw/credentials/google-service-account.json',
+      credentials: serviceAccountKey,
       scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
     });
 

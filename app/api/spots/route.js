@@ -2,7 +2,7 @@ import { google } from 'googleapis';
 
 export async function GET() {
   try {
-    const sheetId = process.env.SHEET_ID;
+    const sheetId = (process.env.SHEET_ID || '').trim();
     const serviceAccountKey = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY);
 
     // Initialize Google Sheets API

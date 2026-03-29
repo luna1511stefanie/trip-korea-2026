@@ -64,8 +64,9 @@ export async function GET() {
 
   } catch (error) {
     console.error('Error fetching spots:', error.message, error.stack);
+    const sid = process.env.SHEET_ID || '';
     return Response.json(
-      { error: 'Failed to fetch travel spots', detail: error.message }, 
+      { error: 'Failed to fetch travel spots', detail: error.message, sheetIdPreview: sid ? (sid.substring(0,10) + '... len=' + sid.length) : 'MISSING', hasKey: !!process.env.GOOGLE_SERVICE_ACCOUNT_KEY }, 
       { status: 500 }
     );
   }
